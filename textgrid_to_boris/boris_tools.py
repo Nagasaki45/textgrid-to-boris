@@ -1,5 +1,14 @@
+import collections
 from datetime import datetime
 import json
+import operator
+
+
+Event = collections.namedtuple(
+    'Event',
+    ['time', 'subject', 'code', 'type', 'modifier', 'comment'],
+    defaults=['', '', ''],
+)
 
 
 def read_boris(filepath):
@@ -28,13 +37,13 @@ def get_subject_by_name(boris, name):
 
 
 def create_event(start_time, behavior_code, subject_name):
-    return [start_time, subject_name, behavior_code, '', '']
+    return Event(start_time, subject_name, behavior_code)
 
 
 def create_observation(events, timestamp):
     date = datetime.fromtimestamp(timestamp)
     return {
-        'events': events,
+        'events': sorted(events, key=operator.attrgetter('time')),
         'type': 'LIVE',  # Otherwise we need to take care of media.
                          # The user can do it later.
         'date': date.isoformat(),
