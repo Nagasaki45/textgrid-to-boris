@@ -19,7 +19,7 @@ Mapping = collections.namedtuple(
 tier_type_to_behavior_type = {
     'TextTier': 'Point event',
     'PointTier': 'Point event',
-    'IntervalTier': NotImplemented,  # TODO
+    'IntervalTier': 'State event',
 }
 
 
@@ -52,6 +52,29 @@ def validate_tier_behavior_compatibility(tier, behavior):
         raise TypeError(msg)
 
 
+def annotation_to_events(annotation, behavior_code, subject_name):
+    if isinstance(annotation, tgt.core.Point):
+        return [
+            boris_tools.create_event(
+                annotation.start_time,
+                behavior_code,
+                subject_name,
+            ),
+        ]
+    return [
+        boris_tools.create_event(
+            annotation.start_time,
+            behavior_code,
+            subject_name,
+        ),
+        boris_tools.create_event(
+            annotation.end_time,
+            behavior_code,
+            subject_name,
+        ),
+    ]
+
+
 def cli(argv):
     args = parse_arguments(argv)
 
@@ -69,14 +92,12 @@ def cli(argv):
         # We don't need the subject, only to fail if it doesn't exist
         boris_tools.get_subject_by_name(boris, mapping.subject_name)
 
-        events += [
-            boris_tools.create_event(
-                annotation.start_time,
-                mapping.subject_name,
+        for annotation in tier:
+            events += annotation_to_events(
+                annotation,
                 mapping.behavior_code,
+                mapping.subject_name,
             )
-            for annotation in tier
-        ]
 
     observation_name = os.path.basename(args.textgrid)
     observation = boris_tools.create_observation(

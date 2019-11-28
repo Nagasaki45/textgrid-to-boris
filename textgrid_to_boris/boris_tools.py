@@ -27,7 +27,7 @@ def get_subject_by_name(boris, name):
     raise ValueError(f'Subject doesn\'t exist: "{name}"')
 
 
-def create_event(start_time, subject_name, behavior_code):
+def create_event(start_time, behavior_code, subject_name):
     return [start_time, subject_name, behavior_code, '', '']
 
 
