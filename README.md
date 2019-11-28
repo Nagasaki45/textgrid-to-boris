@@ -1,6 +1,6 @@
 # TextGrid-to-BORIS
 
-Covert [Praat](http://www.fon.hum.uva.nl/praat/) TextGrid to [BORIS](http://www.boris.unito.it/) observation.
+Convert [Praat](http://www.fon.hum.uva.nl/praat/) TextGrid to [BORIS](http://www.boris.unito.it/) observation.
 
 ## Installation
 

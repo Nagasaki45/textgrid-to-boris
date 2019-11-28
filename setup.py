@@ -13,7 +13,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 setup(
     name='textgrid-to-boris',
     version='0.0.1',
-    description='Covert Praat TextGrid to BORIS observation',
+    description='Convert Praat TextGrid to BORIS observation',
     long_description=long_description,
     url='https://github.com/Nagasaki45/textgrid-to-boris',
     author='Tom Gurion',
