@@ -17,7 +17,9 @@ For more information see the [official packages installation guide](https://pack
 ### Command line interface
 
 ```bash
-tgtb your.textgrid your.boris textgrid_tier_name:boris_behavior_code:boris_subject_name another_tier_name:boris_behavior_code:subject_name
+tgtb your.textgrid your.boris \
+  textgrid_tier_name:boris_behavior_code:boris_subject_name \
+  another_tier_name:behavior_code:subject_name
 ```
 
 `subject_name` is optional.
