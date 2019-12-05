@@ -86,7 +86,7 @@ setup(
     # executes the function `main` from this package when invoked:
     entry_points={
         'console_scripts': [
-            'tgtb=textgrid_to_boris.tgtb:main',
+            'tgtb=textgrid_to_boris.cli:main',
         ],
     },
 )
