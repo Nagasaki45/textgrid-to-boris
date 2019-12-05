@@ -39,9 +39,9 @@ mappings = [
         'subject_name': 'participant01',  # From BORIS
     },
     {
-        'tier_name': 'farting',
-        'behavior_code': 'F',
-        'subject_name': 'participant02',
+        'tier_name': 'miscommunication',
+        'behavior_code': 'mis',
+        'subject_name': None,
     },
 ]
 
