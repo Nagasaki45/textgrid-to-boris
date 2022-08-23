@@ -5,5 +5,5 @@
 #    pip-compile --output-file=requirements.txt requirements.in setup.py
 #
 -e file:///home/nagasaki45/code/textgrid-to-boris
-numpy==1.17.4
+numpy==1.22.0
 tgt==1.4.4
